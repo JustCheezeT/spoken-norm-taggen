@@ -238,8 +238,7 @@ def generate_spoken_norm(list_spoken_features, list_features_mask, bias_features
     max_length = 50
     device = list_spoken_features.device
     decoder_input_ids = torch.zeros((batch_size, 1), device=device, dtype=torch.int64)
-    stopping_criteria = model._get_stopping_criteria(max_length=max_length, max_time=None,
-                                                     stopping_criteria=StoppingCriteriaList())
+    stopping_criteria = None
     model_kwargs = {
         "encoder_outputs": EncoderOutputs(last_hidden_state=list_spoken_features),
         "encoder_bias_outputs": bias_features,
